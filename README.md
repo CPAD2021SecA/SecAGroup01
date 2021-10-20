@@ -6,4 +6,3 @@ Prakash Raj     2020SP93048
 Sameer          2020SP93028
 Sayantan Pal    2020SP93050
 Utkarsh Verma   2020SP93057
-
