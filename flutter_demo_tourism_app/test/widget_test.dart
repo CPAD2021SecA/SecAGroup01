@@ -7,8 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-//import 'package:flutter_demo_tourism_app/main.dart';
 import 'package:flutter_demo_tourism_app/screens/main_screen.dart';
 
 void main() {
