@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_tourism_app/screens/home.dart';
+import 'package:flutter_demo_tourism_app/screens/main_screen.dart';
+import 'screens/chat_screen.dart';
+import 'screens/registration_screen.dart';
+import 'screens/welcome_screen.dart';
+import 'screens/login_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+void main() => runApp(FlashChat());
 
-  // This widget is the root of your application.
+class FlashChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: WelcomeScreen.id,
+      routes: {
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
+        MainScreen.id: (context) => MainScreen(),
+      },
     );
   }
 }
