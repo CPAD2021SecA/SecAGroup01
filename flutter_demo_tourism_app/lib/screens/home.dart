@@ -37,7 +37,9 @@ class MyHomePage extends StatelessWidget {
           Icons.person,
       ),
             onPressed: () {
-              
+              //todo: log out functionality
+              // _auth.signOut();
+
             },
           ),
         ],

@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'main_screen.dart';
 import 'details.dart';
-void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/':(context) => MyApp(),
-      '/MainScreen': (context) => MainScreen(),
-      '/DetailsScreen' : (context) => Details()
-    },
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     initialRoute: '/',
+//     routes: {
+//       '/':(context) => MyApp(),
+//       '/MainScreen': (context) => MainScreen(),
+//       '/DetailsScreen' : (context) => Details()
+//     },
+//   ));
+// }
+
 
 class MyApp extends StatefulWidget {
+  // static const String id = 'login_screen';
   @override
   _State createState() => _State();
+
 }
 
 class _State extends State<MyApp> {
@@ -86,7 +89,7 @@ class _State extends State<MyApp> {
                       onPressed: () {
                         print(nameController.text);
                         print(passwordController.text);
-                        Navigator.pushNamed(context, '/MainScreen');
+                        // Navigator.pushNamed(context, '/MainScreen');
                       },
                     )),
                 Container(

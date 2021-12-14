@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
 import 'package:flutter_demo_tourism_app/screens/main_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -8,6 +10,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController pwdController = TextEditingController();
+  late String email;
+  late String password;
+  AuthClass authClass =AuthClass();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               onChanged: (value) {
+                email = value;
                 //Do something with the user input.
               },
               decoration: InputDecoration(
@@ -47,13 +56,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
+              controller: emailController,
             ),
+            // Container(
+            //   padding: EdgeInsets.all(10),
+            //   child: TextField(
+            //     controller: emailController,
+            //     decoration: const InputDecoration(
+            //       border: OutlineInputBorder(),
+            //       labelText: "User email",
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 8.0,
             ),
             TextField(
               onChanged: (value) {
                 //Do something with the user input.
+                password = value;
               },
               decoration: InputDecoration(
                 hintText: 'Enter your password.',
@@ -84,9 +105,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 elevation: 5.0,
                 child: MaterialButton(
-                  onPressed: () {
+                  onPressed: () async {
                     //Implement login functionality.
-                    Navigator.pushNamed(context, MainScreen.id);
+                    try {
+                      final user = await _auth.signInWithEmailAndPassword(
+                          email: email, password: password);
+                      if (user != null) {
+                        Navigator.pushNamed(context, MainScreen.id);
+                      }
+                    }catch(e){
+                      print(e);
+                    }
                   },
                   minWidth: 200.0,
                   height: 42.0,
