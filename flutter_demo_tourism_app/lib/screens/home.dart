@@ -390,13 +390,13 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return Details();
-                    },
-                  ),
-                );
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (BuildContext context) {
+                //       return Details();
+                //     },
+                //   ),
+                // );
               },
             ),
           );

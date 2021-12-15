@@ -1,7 +1,6 @@
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
 import 'package:flutter_demo_tourism_app/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'login_screen.dart';
 import 'main_screen.dart';
 
@@ -16,20 +15,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   AuthClass authClass = AuthClass();
   String currentPage = WelcomeScreen.id;
 
-  // @override
-  // void initState(){
-  //   super.initState();
-  //   checklogin();
-  // }
-  //
-  // void checklogin() async{
-  // String? token = await authClass.getToken();
-  // if (token!=null){
-  //   setState(() {
-  //     currentPage = MainScreen.id;
-  //   });
-  // }
-  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
