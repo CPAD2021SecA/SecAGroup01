@@ -3,7 +3,7 @@ import 'package:flutter_demo_tourism_app/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'main_screen.dart';
-
+//todo:authclass, onpress
 class WelcomeScreen extends StatefulWidget {
 
   static const String id = 'welcome_screen';
@@ -57,6 +57,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: MaterialButton(
                   onPressed: () {
                     Navigator.pushNamed(context, LoginScreen.id);
+
                   },
                   minWidth: 200.0,
                   height: 42.0,
