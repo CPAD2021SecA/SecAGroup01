@@ -1,10 +1,16 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
+import 'package:flutter_demo_tourism_app/Service/DataBase_Service.dart';
 import 'package:flutter_demo_tourism_app/screens/main_screen.dart';
-import 'package:flutter_demo_tourism_app/util/places.dart';
+import 'package:flutter_demo_tourism_app/screens/package_form.dart';
+import 'package:flutter_demo_tourism_app/screens/review_form.dart';
 import 'package:flutter_demo_tourism_app/widgets/icon_badge.dart';
+
 
 class Details extends StatefulWidget {
   final Place place;
@@ -28,16 +34,43 @@ void getCurrentUser () async {
     print(loggedInUser.email);
   }
 }
+List userReviewList =[];
 @override
 void initState(){
   super.initState();
   getCurrentUser();
+  fetchUserReviewDataList();
+
+}
+
+  fetchUserReviewDataList() async{
+  dynamic resultant = await DataBaseService(uid: _auth.currentUser!.uid).fetchUserReviewData(this.place.id);
+  if (resultant == null){
+  print("result is null");
+  }else{
+    setState(() {
+      userReviewList = resultant;
+      print("inside details page");
+      print(userReviewList);
+    });
+
+  }
 }
 final Stream<QuerySnapshot> _stream = FirebaseFirestore.instance.collection("placeDetails").snapshots();
-
+//final Stream<QuerySnapshot> _reviewStream = FirebaseFirestore.instance.collection('reviewDetails').snapshots()
   TextEditingController reviewController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+
+    void _showSettingsPanel(Place place) {
+      showModalBottomSheet(context: context, builder: (context) {
+        return Container(
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+          child: SettingsForm( place: place),
+        );
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -55,6 +88,7 @@ final Stream<QuerySnapshot> _stream = FirebaseFirestore.instance.collection("pla
           ),
         ],
       ),
+
       body: StreamBuilder<QuerySnapshot>(
         stream: _stream,
         builder: (context, snapshot) {
@@ -67,6 +101,7 @@ final Stream<QuerySnapshot> _stream = FirebaseFirestore.instance.collection("pla
                 return Column(
                   children: <Widget>[
                     SizedBox(height: 10.0),
+
                     buildSlider1(),
                     SizedBox(height: 20),
                     ListView(
@@ -91,11 +126,13 @@ final Stream<QuerySnapshot> _stream = FirebaseFirestore.instance.collection("pla
                               ),
                             ),
                             IconButton(
+                              tooltip: "Add Review",
                               icon: Icon(
-                                Icons.bookmark,
+                                Icons.rate_review,
                               ),
-                              onPressed: () {},
+                              onPressed: () => _showSettingsPanel(this.place),
                             ),
+
                           ],
                         ),
                         Row(
@@ -161,38 +198,34 @@ final Stream<QuerySnapshot> _stream = FirebaseFirestore.instance.collection("pla
                         ),
                         SizedBox(height: 10.0),
                         //todo: check data is being fetched from the DB
-                        Container(
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                          child: TextField(
-                            controller: reviewController,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Password',
-                            ),
-                          ),
-                        ),
-                        FlatButton(
-                          onPressed: (){
-                            //forgot password screen
-                          },
-                          textColor: Colors.blue,
-                          child: Text('Forgot Password'),
-                        ),
+
+
                       ],
                     ),
+                    Text("Review Section : ", style: TextStyle(fontSize: 18, fontWeight:FontWeight.bold),),
+                    buildSlider(),
                   ],
+
                 );
 
           });
 
         }
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(
-      //     Icons.airplanemode_active,
-      //   ),
-      //   onPressed: () {},
-      // ),
+
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.airplanemode_active,
+        ),
+        onPressed: () {
+          showModalBottomSheet(context: context, builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+              child: PacakageForm( place: place),
+            );
+          });
+        },
+      ),
     );
   }
 
@@ -201,22 +234,23 @@ final Stream<QuerySnapshot> _stream = FirebaseFirestore.instance.collection("pla
       padding: EdgeInsets.only(left: 20),
       height: 250.0,
       child: ListView.builder(
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         primary: false,
-        itemCount: places == null ? 0 : places.length,
+        itemCount: userReviewList.length,
         itemBuilder: (BuildContext context, int index) {
-          Map place = places[index];
+          Map review = userReviewList[index];
 
           return Padding(
             padding: EdgeInsets.only(right: 10.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset(
-                "assets/"+this.place.imgFile,
-                height: 250.0,
-                width: MediaQuery.of(context).size.width - 40.0,
-                fit: BoxFit.cover,
+              child:ListTile(
+                leading: Icon(
+                  Icons.reviews
+                ),
+                title: Text(review['review']),
               ),
+              
             ),
           );
         },

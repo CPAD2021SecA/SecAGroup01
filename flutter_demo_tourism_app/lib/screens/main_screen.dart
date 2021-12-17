@@ -9,11 +9,12 @@ import 'package:flutter_demo_tourism_app/widgets/search_bar.dart';
 import 'package:flutter_demo_tourism_app/screens/details.dart';
 
 class Place {
+  final int id;
   final String name;
   final String description;
   final String imgFile;
 
-  const Place(this.name, this.description, this.imgFile);
+  const Place(this.id,this.name, this.description, this.imgFile);
 }
  class MainScreen extends StatefulWidget {
    const MainScreen({Key? key}) : super(key: key);
@@ -24,12 +25,14 @@ class Place {
 
  class _MainScreenState extends State<MainScreen> {
    AuthClass authClass = AuthClass();
+   late  var userName = '';
    final _auth = FirebaseAuth.instance;
    late User loggedInUser;
    void getCurrentUser () async {
      final user = await _auth.currentUser;
      if (user !=null){
       loggedInUser = user;
+      userName = loggedInUser.displayName!;
       print(loggedInUser.email);
      }
    }
@@ -200,7 +203,7 @@ class Place {
                    onTap: () {
 
                      int i = index;
-                     Place place = new Place(snapshot.data!.docs[index].get('placeDesc'),snapshot.data!.docs[index].get('placeDesc'),snapshot.data!.docs[index].get('imgFileName'));
+                     Place place = new Place(snapshot.data!.docs[index].get('placeID'),snapshot.data!.docs[index].get('placeDesc'),snapshot.data!.docs[index].get('placeDesc'),snapshot.data!.docs[index].get('imgFileName'));
                      Navigator.push(
                        context,
                        MaterialPageRoute(

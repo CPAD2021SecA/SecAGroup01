@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
-    // Replace with actual values
+    //Replace with actual values
     // options: FirebaseOptions(
     //   apiKey: "AIzaSyB9W6YNxq5T05L3Oh4qnd8cnR1Qh1jexVo",
     //   appId: "1:157881208388:web:ece8cb4c4945119c9f3611",

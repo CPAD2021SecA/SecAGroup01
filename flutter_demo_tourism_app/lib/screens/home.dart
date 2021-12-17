@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
           Icons.person,
       ),
             onPressed: () {
-              //todo: log out functionality
+              //todo: user profile screen
               // _auth.signOut();
 
             },
@@ -49,7 +49,7 @@ class MyHomePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Where are you \ngoing?",
+              "Where are you going?",
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.w600,
