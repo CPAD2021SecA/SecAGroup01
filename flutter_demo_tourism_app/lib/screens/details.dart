@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_tourism_app/util/places.dart';
 import 'package:flutter_demo_tourism_app/widgets/icon_badge.dart';
 
-class Details extends StatelessWidget {
+class Details extends StatefulWidget {
+  const Details({Key? key}) : super(key: key);
+
+  @override
+  _DetailsState createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,6 +137,8 @@ class Details extends StatelessWidget {
       ),
     );
   }
+}
+
 
   buildSlider() {
     return Container(
@@ -158,4 +167,4 @@ class Details extends StatelessWidget {
       ),
     );
   }
-}
+
