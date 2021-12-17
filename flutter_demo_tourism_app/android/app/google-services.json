@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "157881208388",
+    "project_id": "take-a-tour-56291",
+    "storage_bucket": "take-a-tour-56291.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157881208388:android:e994d849fc7ed2889f3611",
+        "android_client_info": {
+          "package_name": "com.example.flutter_demo_tourism_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157881208388-h3sj5rj0dd4oei3hmod6evivfn76kfg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA76T9-mofmS9FI3p3EWk2YlgCj6J0KoPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157881208388-h3sj5rj0dd4oei3hmod6evivfn76kfg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

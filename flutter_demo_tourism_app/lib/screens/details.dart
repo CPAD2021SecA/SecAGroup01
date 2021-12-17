@@ -12,7 +12,6 @@ import 'package:flutter_demo_tourism_app/screens/review_form.dart';
 import 'package:flutter_demo_tourism_app/widgets/icon_badge.dart';
 
 
-
 class Details extends StatefulWidget {
   final Place place;
   const Details({Key? key, required this.place,  }) : super(key: key);

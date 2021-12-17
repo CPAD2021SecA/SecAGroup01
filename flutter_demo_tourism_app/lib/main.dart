@@ -5,7 +5,6 @@ import 'screens/registration_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/login_screen.dart';
 
-
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -23,8 +22,7 @@ void main() async {
 
   runApp(TourApp());
 }
-
-
+// void main() => runApp(FlashChat());
 class TourApp extends StatefulWidget {
   const TourApp({Key? key}) : super(key: key);
 
@@ -33,7 +31,6 @@ class TourApp extends StatefulWidget {
 }
 
 class _TourAppState extends State<TourApp> {
-
   String currentPage = WelcomeScreen.id;
 
 
@@ -58,7 +55,6 @@ class _TourAppState extends State<TourApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: currentPage,
-
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),

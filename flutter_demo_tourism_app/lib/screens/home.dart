@@ -4,35 +4,44 @@ import 'package:flutter_demo_tourism_app/util/places.dart';
 import 'package:flutter_demo_tourism_app/widgets/search_bar.dart';
 import 'package:flutter_demo_tourism_app/screens/details.dart';
 
-class MyHomePage extends StatefulWidget {
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({Key? key, required this.title}) : super(key: key);
+//
+//   final String title;
+//
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+
+class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        //title: Text(),
+        // leading: IconButton(
+        //   icon: Icon(
+        //     Icons.arrow_back,
+        //   ),
+        //   onPressed: () => Navigator.pop(context),
+        // ),
         title: Text(
-          widget.title,
-          //'Flutter Demo Home Page',
+          title,
         ),
         actions: <Widget>[
           IconButton(
-            icon: IconBadge(
-              icon: Icons.notifications_none,
-            ),
-            onPressed: () {},
+            icon: Icon(
+          Icons.person,
+      ),
+            onPressed: () {
+              //todo: user profile screen
+              // _auth.signOut();
+
+            },
           ),
         ],
       ),
@@ -41,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Where are you \ngoing?",
+              "Where are you going?",
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.w600,
@@ -53,7 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: SearchBar(),
           ),
           buildHorizontalList(context),
-          buildVerticalList(),
+          buildHorizontalList(context),
+
 
         ],
       ),
@@ -143,6 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         body: ListView(
                           children: <Widget>[
                             SizedBox(height: 10.0),
+                            //row 1
                             Container(
                               padding: EdgeInsets.only(left: 20),
                               height: 250.0,
@@ -170,6 +181,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 },
                               ),
                             ),
+                            //row 2
+
                             SizedBox(height: 20),
                             ListView(
                               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -378,13 +391,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return Details();
-                    },
-                  ),
-                );
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (BuildContext context) {
+                //       return Details();
+                //     },
+                //   ),
+                // );
               },
             ),
           );

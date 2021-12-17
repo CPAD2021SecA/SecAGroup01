@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
@@ -20,37 +21,39 @@ class _UserProfileState extends State<UserProfile>
   final _auth = FirebaseAuth.instance;
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
     fetchUserBookingData();
     //fetchPacakgeDataWithPID();
-  }
 
+  }
   List bookingList = [];
   List packList = [];
 
-  fetchUserBookingData() async {
-    dynamic resultant = await DataBaseService(uid: _auth.currentUser!.uid)
-        .fetchUserBookingData(_auth.currentUser!.uid);
-    setState(() {
-      bookingList = resultant;
-      print("inside details page");
-      print(bookingList);
-      fetchPacakgeDataWithPID();
-    });
+  fetchUserBookingData() async{
+    dynamic resultant = await DataBaseService(uid: _auth.currentUser!.uid).fetchUserBookingData(_auth.currentUser!.uid);
+      setState(() {
+        bookingList = resultant;
+        print("inside details page");
+        print(bookingList);
+        fetchPacakgeDataWithPID();
+      });
+
   }
 
-  fetchPacakgeDataWithPID() async {
-    dynamic resultant = await DataBaseService(uid: _auth.currentUser!.uid)
-        .fetchPacakgeDataWithPID(bookingList);
-    if (resultant == null) {
+  fetchPacakgeDataWithPID() async{
+    dynamic resultant = await DataBaseService(uid: _auth.currentUser!.uid).fetchPacakgeDataWithPID(bookingList);
+    if (resultant == null){
       print("result is null");
-    } else {
+    }else{
+
       setState(() {
         packList = resultant;
         print("inside details page");
         print(packList);
       });
+
+
     }
   }
 
@@ -62,7 +65,10 @@ class _UserProfileState extends State<UserProfile>
         backgroundColor: Colors.amber,
         title: Text('Profile'),
         elevation: 2.0,
+
       ),
+
+
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -82,7 +88,9 @@ class _UserProfileState extends State<UserProfile>
               Text(
                 'User Name',
                 style: TextStyle(
-                  fontSize: 15.0,
+
+                    fontSize: 15.0,
+
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -92,7 +100,11 @@ class _UserProfileState extends State<UserProfile>
 
               Text(
                 userEmail!,
-                style: TextStyle(fontSize: 15.0),
+
+                style: TextStyle(
+                    fontSize: 15.0
+                ),
+
               ),
 
               // TextField(
@@ -108,7 +120,9 @@ class _UserProfileState extends State<UserProfile>
               Text(
                 'Bookings',
                 style: TextStyle(
-                  fontSize: 16.0,
+
+                    fontSize: 16.0,
+
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -150,8 +164,10 @@ class _UserProfileState extends State<UserProfile>
           Map pack = packList[index];
 
           return ListTile(
-            title: Text('Pack Name : ' + pack['packName']),
-            subtitle: Text('Pack price: ' + pack['packPrice'].toString()),
+
+            title: Text('Pack Name : '+pack['packName']),
+            subtitle: Text('Pack price: '+ pack['packPrice'].toString() ),
+
           );
         },
       ),
@@ -177,18 +193,20 @@ class _UserProfileState extends State<UserProfile>
               padding: EdgeInsets.only(right: 10.0),
               child: Container(
                   child: new RaisedButton(
-                child: new Text("Save"),
-                textColor: Colors.white,
-                color: Colors.green,
-                onPressed: () {
-                  setState(() {
-                    _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                  });
-                },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
-              )),
+
+                    child: new Text("Save"),
+                    textColor: Colors.white,
+                    color: Colors.green,
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
+                    },
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                  )),
+
             ),
             flex: 2,
           ),
@@ -197,18 +215,20 @@ class _UserProfileState extends State<UserProfile>
               padding: EdgeInsets.only(left: 10.0),
               child: Container(
                   child: new RaisedButton(
-                child: new Text("Cancel"),
-                textColor: Colors.white,
-                color: Colors.red,
-                onPressed: () {
-                  setState(() {
-                    _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                  });
-                },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
-              )),
+
+                    child: new Text("Cancel"),
+                    textColor: Colors.white,
+                    color: Colors.red,
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
+                    },
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                  )),
+
             ),
             flex: 2,
           ),
@@ -232,3 +252,4 @@ class _UserProfileState extends State<UserProfile>
     );
   }
 }
+
