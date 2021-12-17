@@ -6,8 +6,8 @@ import 'package:flutter_demo_tourism_app/screens/details.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
-  static const String id = 'main_screen';
 
+  static const String id = 'main_screen';
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -49,8 +49,10 @@ class _MainScreenState extends State<MainScreen> {
             padding: EdgeInsets.all(20.0),
             child: SearchBar(),
           ),
+
           buildHorizontalList(context),
-          buildVerticalList(),
+          buildHorizontalList(context),
+
         ],
       ),
     );
@@ -282,6 +284,7 @@ buildHorizontalList(BuildContext context) {
   );
 }
 
+
 buildVerticalList() {
   return Padding(
     padding: EdgeInsets.all(20.0),
@@ -387,3 +390,4 @@ buildVerticalList() {
     ),
   );
 }
+
