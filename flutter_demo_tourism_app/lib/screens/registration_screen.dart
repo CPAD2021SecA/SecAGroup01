@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
 
 import 'main_screen.dart';
+
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
   @override
@@ -10,8 +12,10 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+
   final _auth = FirebaseAuth.instance;
   AuthClass authClass = AuthClass();
+
   late String email;
   late String password;
   @override
@@ -26,7 +30,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           children: <Widget>[
             Container(
               height: 200.0,
+
               // child: Image.asset('assets/log'),
+
             ),
             SizedBox(
               height: 48.0,
@@ -53,6 +59,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
+
             ),
             SizedBox(
               height: 8.0,
@@ -111,6 +118,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
           ],
+
         ),
       ),
     );

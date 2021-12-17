@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
 import 'package:flutter_demo_tourism_app/screens/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -10,9 +12,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   final _formKey = GlobalKey<FormState>();
   final _auth = FirebaseAuth.instance;
   AuthClass authClass = AuthClass();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
   late String email;
@@ -24,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
+
         child: Form(
           key: _formKey,
           child: Column(
@@ -137,6 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ],
           ),
+
         ),
       ),
     );

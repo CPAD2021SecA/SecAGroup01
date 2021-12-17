@@ -1,9 +1,10 @@
+
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
 import 'package:flutter_demo_tourism_app/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'main_screen.dart';
-//todo:authclass, onpress
+
 class WelcomeScreen extends StatefulWidget {
 
   static const String id = 'welcome_screen';
@@ -12,7 +13,9 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+
   AuthClass authClass = AuthClass();
+
   String currentPage = WelcomeScreen.id;
 
   @override
@@ -57,8 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: MaterialButton(
                   onPressed: () {
                     Navigator.pushNamed(context, LoginScreen.id);
-
-                  },
+      },
                   minWidth: 200.0,
                   height: 42.0,
                   child: Text(
@@ -96,10 +98,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         'Sign in with Google',
                         style: TextStyle(fontSize: 20),
                       ),
+
                       onPressed: () async {
                         //Main screen
                         await authClass.googleSignIn(context);
                         Navigator.pushNamed(context, MainScreen.id);
+
 
                       },
                     )

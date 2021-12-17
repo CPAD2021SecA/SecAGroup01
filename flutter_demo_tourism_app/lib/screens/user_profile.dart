@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
 import 'package:flutter_demo_tourism_app/Service/DataBase_Service.dart';
+
 class UserProfile extends StatefulWidget {
   const UserProfile({Key? key}) : super(key: key);
   static const String id = 'user_profile';
@@ -45,14 +46,17 @@ class _UserProfileState extends State<UserProfile>
     if (resultant == null){
       print("result is null");
     }else{
+
       setState(() {
         packList = resultant;
         print("inside details page");
         print(packList);
       });
 
+
     }
   }
+
   @override
   Widget build(BuildContext context) {
     String? userEmail = authClass.auth.currentUser!.email;
@@ -63,6 +67,7 @@ class _UserProfileState extends State<UserProfile>
         elevation: 2.0,
 
       ),
+
 
       body: SingleChildScrollView(
         child: Padding(
@@ -83,7 +88,9 @@ class _UserProfileState extends State<UserProfile>
               Text(
                 'User Name',
                 style: TextStyle(
+
                     fontSize: 15.0,
+
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -93,9 +100,11 @@ class _UserProfileState extends State<UserProfile>
 
               Text(
                 userEmail!,
+
                 style: TextStyle(
                     fontSize: 15.0
                 ),
+
               ),
 
               // TextField(
@@ -111,7 +120,9 @@ class _UserProfileState extends State<UserProfile>
               Text(
                 'Bookings',
                 style: TextStyle(
+
                     fontSize: 16.0,
+
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -141,6 +152,7 @@ class _UserProfileState extends State<UserProfile>
       ),
     );
   }
+
   buildSlider() {
     return Container(
       height: 250.0,
@@ -152,13 +164,16 @@ class _UserProfileState extends State<UserProfile>
           Map pack = packList[index];
 
           return ListTile(
+
             title: Text('Pack Name : '+pack['packName']),
             subtitle: Text('Pack price: '+ pack['packPrice'].toString() ),
+
           );
         },
       ),
     );
   }
+
   @override
   void dispose() {
     // Clean up the controller when the Widget is disposed
@@ -178,6 +193,7 @@ class _UserProfileState extends State<UserProfile>
               padding: EdgeInsets.only(right: 10.0),
               child: Container(
                   child: new RaisedButton(
+
                     child: new Text("Save"),
                     textColor: Colors.white,
                     color: Colors.green,
@@ -190,6 +206,7 @@ class _UserProfileState extends State<UserProfile>
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(20.0)),
                   )),
+
             ),
             flex: 2,
           ),
@@ -198,6 +215,7 @@ class _UserProfileState extends State<UserProfile>
               padding: EdgeInsets.only(left: 10.0),
               child: Container(
                   child: new RaisedButton(
+
                     child: new Text("Cancel"),
                     textColor: Colors.white,
                     color: Colors.red,
@@ -210,6 +228,7 @@ class _UserProfileState extends State<UserProfile>
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(20.0)),
                   )),
+
             ),
             flex: 2,
           ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_tourism_app/Service/Auth_Service.dart';
 import 'package:flutter_demo_tourism_app/screens/user_profile.dart';
 import 'package:flutter_demo_tourism_app/screens/welcome_screen.dart';
+
 import 'package:flutter_demo_tourism_app/util/places.dart';
 import 'package:flutter_demo_tourism_app/widgets/search_bar.dart';
 import 'package:flutter_demo_tourism_app/screens/details.dart';
@@ -342,11 +343,8 @@ class Place {
           ),
         );
       }
+
     );
 
 }
-
-
-
-
 
